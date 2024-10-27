@@ -158,7 +158,7 @@
             alert("Payment confirmation email has been sent!");
 
             // Redirect after successful email sending
-            window.location.href = `https://chetan1930.github.io/My-Payment-Page/?course=${course}&date=${date}&time=${time}&email=${encodeURIComponent(email)}&status=confirmed`;
+            window.location.href = "booking-confirmation.html";
         }, function(error) {
             console.error("FAILED...", error);
             alert("There was an issue sending the confirmation email. Please try again.");
