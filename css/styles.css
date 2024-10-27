@@ -192,11 +192,11 @@
     100% { transform: translateX(100%); }
 }
 
-@keyframes expandLine {
+/* @keyframes expandLine {
     0% { width: 0; opacity: 0; }
     50% { width: 50px; opacity: 1; }
     100% { width: 0; opacity: 0; }
-}
+} */
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -452,11 +452,11 @@
     100% { transform: translateX(100%); }
   }
 
-  @keyframes expandLine {
+/*   @keyframes expandLine {
     0% { width: 0; opacity: 0; }
     50% { width: 50px; opacity: 1; }
     100% { width: 0; opacity: 0; }
-  }
+  } */
 
   @keyframes spin {
     0% { transform: rotate(0deg); }
