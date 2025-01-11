@@ -144,51 +144,56 @@
     <!-- Payment Script -->
     <script>
         function completePayment() {
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-
+            // Retrieve input values
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+    
+            // Validate inputs
             if (!name) {
                 alert("Please enter your name to receive the confirmation link.");
                 return;
             }
-
-            if (!email ) {
+    
+            if (!email) {
                 alert("Please enter your email to receive the confirmation link.");
                 return;
             }
-
-            // Extract course, date, and time from URL parameters (or set defaults for testing)
+    
+            // Extract parameters from URL
             const params = new URLSearchParams(window.location.search);
-            const course = params.get("course");
-            const date = params.get("date");
-            const time = params.get("time");
-
+            const course = params.get("course") || "Default Course";
+            const date = params.get("date") || "Default Date";
+            const time = params.get("time") || "Default Time";
+    
             // Prepare email template parameters
             const templateParams = {
-                name:name,
+                name: name,
                 to_email: email,
                 course: course,
                 date: date,
-                time: time
+                time: time,
             };
-
+    
             console.log("Attempting to send email with parameters:", templateParams);
-
-            // Use EmailJS to send the email
+    
+            // Send email using EmailJS
             emailjs.send("service_azpsyim", "template_6w402yf", templateParams)
-                .then(function (response) {
-                    console.log("SUCCESS!", response.status, response.text);
-                    alert("Payment confirmation email has been sent!");
-
-                    // Redirect after successful email sending
-                    window.location.href = "booking-confirmation.html";
-                }, function (error) {
-                    console.error("FAILED...", error);
-                    alert("There was an issue sending the confirmation email. Please try again.");
-                });
+                .then(
+                    function (response) {
+                        console.log("SUCCESS!", response.status, response.text);
+                        alert("Payment confirmation email has been sent!");
+    
+                        // Redirect to Razorpay link
+                        window.location.href = "https://rzp.io/rzp/LbQ9Zgu";
+                    },
+                    function (error) {
+                        console.error("FAILED...", error);
+                        alert("There was an issue sending the confirmation email. Please try again.");
+                    }
+                );
         }
-
     </script>
+    
 </body>
 
 </html>
