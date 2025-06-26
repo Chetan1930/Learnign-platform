@@ -4,7 +4,7 @@
 
 This is a **Class Booking Web Application** built during my 3rd year of college. The goal of this project was to provide a seamless way for students to book their desired courses online. It features a modern front-end built with **HTML**, **CSS**, and **JavaScript**, along with functionality to **send email confirmations** to both the user and admin upon booking.
 
-> 🌐 Live Demo: [Visit the App](https://chetan1930.github.io/Learnign-platform/)
+> 🌐 Live Demo: [Visit the App] https://chetan1930.github.io/Learnign-platform/ 
 
 ## ✨ Features
 
@@ -17,7 +17,7 @@ This is a **Class Booking Web Application** built during my 3rd year of college.
 ## 📸 Screenshots
 
 > Home Page  
-![Home Page](https://raw.githubusercontent.com/Chetan1930/Learnign-platform/main/screenshots/home.png)
+![Home Page] https://raw.githubusercontent.com/Chetan1930/Learnign-platform/main/screenshots/home.png
 
 > Booking Form  
 ![Booking Form](https://raw.githubusercontent.com/Chetan1930/Learnign-platform/main/screenshots/form.png)
