@@ -101,18 +101,13 @@
         }
     </style>
 
-
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">
         (function () {
-            emailjs.init({
-                publicKey: "Umy1TmfJx999DMLwQ",
-            });
+            emailjs.init("Umy1TmfJx999DMLwQ"); // Your public key
         })();
     </script>
-
 
 </head>
 
@@ -124,14 +119,13 @@
             <a href="contact.html" target="_blank">Contact</a>
         </div>
     </nav>
+
     <div class="payment-container">
-        <!-- <h1>Complete Your Payment</h1> -->
-        <h1>Unlock expert insights for just ₹50! </h1>
+        <h1>Unlock expert insights for just ₹50!</h1>
         <p>Confirm your booking now.</p>
 
         <label for="name">Enter your name:</label>
         <input type="text" id="name" name="name" required placeholder="Enter your name">
-
 
         <label for="email">Enter your email correctly, as you will receive the link there:</label>
         <input type="email" id="email" name="email" required placeholder="Enter your email">
@@ -139,61 +133,61 @@
         <button onclick="completePayment()" class="pay-now">Pay ₹50 Now</button>
     </div>
 
-
-
     <!-- Payment Script -->
     <script>
         function completePayment() {
-            // Retrieve input values
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
-    
-            // Validate inputs
+
             if (!name) {
                 alert("Please enter your name to receive the confirmation link.");
                 return;
             }
-    
+
             if (!email) {
                 alert("Please enter your email to receive the confirmation link.");
                 return;
             }
-    
-            // Extract parameters from URL
+
+            // Email validation (basic format check)
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Extract course, date, and time from URL parameters or set default values
             const params = new URLSearchParams(window.location.search);
             const course = params.get("course") || "Default Course";
             const date = params.get("date") || "Default Date";
             const time = params.get("time") || "Default Time";
-    
+
             // Prepare email template parameters
             const templateParams = {
                 name: name,
                 to_email: email,
                 course: course,
                 date: date,
-                time: time,
+                time: time
             };
-    
+
             console.log("Attempting to send email with parameters:", templateParams);
-    
-            // Send email using EmailJS
+
+            // Use EmailJS to send the email
             emailjs.send("service_azpsyim", "template_6w402yf", templateParams)
-                .then(
-                    function (response) {
-                        console.log("SUCCESS!", response.status, response.text);
-                        alert("Payment confirmation email has been sent!");
-    
-                        // Redirect to Razorpay link
-                        window.location.href = "https://rzp.io/rzp/LbQ9Zgu";
-                    },
-                    function (error) {
-                        console.error("FAILED...", error);
-                        alert("There was an issue sending the confirmation email. Please try again.");
-                    }
-                );
+                .then(function (response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                    alert("Payment confirmation email has been sent!");
+
+                    // Redirect after successful email sending
+                    window.location.href = "booking-confirmation.html"; // Ensure this is the correct URL
+                }, function (error) {
+                    console.error("FAILED...", error);
+                    alert("There was an issue sending the confirmation email. Please try again.");
+                });
         }
     </script>
-    
+
 </body>
 
 </html>
